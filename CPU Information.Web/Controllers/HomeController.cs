@@ -9,8 +9,8 @@ namespace CPU_Information.Web.Controllers {
     public class HomeController : Controller {
         private ICPUData database;
 
-        public HomeController() {
-            database = new InMemoryCPUData();
+        public HomeController(ICPUData db) {
+            database = db;
         }
 
         public ActionResult Index() {
