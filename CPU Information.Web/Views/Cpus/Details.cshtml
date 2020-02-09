@@ -1,0 +1,97 @@
+﻿@model CPU_Information.Data.Models.CPU
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details [@Html.DisplayFor(model => model.Model)]</h2>
+
+<div>
+    <h4>CPU</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrequencyBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrequencyBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrequencyTurbo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrequencyTurbo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoresPhysical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoresPhysical)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoresLogical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoresLogical)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenerationCodename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenerationCodename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenerationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenerationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasIntegratedGraphics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasIntegratedGraphics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

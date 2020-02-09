@@ -1,9 +1,7 @@
-﻿using CPU_Information.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CPU_Information.Data.Models;
 
 namespace CPU_Information.Data.Services {
     public class InMemoryCPUData : ICPUData {
@@ -25,9 +23,10 @@ namespace CPU_Information.Data.Services {
                     Architecture="Arch",
                     GenerationCodename="Kaby Lake-R",
                     GenerationNumber=8000,
-                    Manufacturer=new Manufacturer{
-                        Id=1,Name="Intel"
-                    },
+                    //Manufacturer=new Manufacturer{
+                    //    Id=1,Name="Intel"
+                    //},
+                    Manufacturer=Manufacturer.Intel,
                     HasIntegratedGraphics=true,
                     Class=Class.MobileLowPowered
                 },
@@ -45,15 +44,16 @@ namespace CPU_Information.Data.Services {
                     Architecture="Arch",
                     GenerationCodename="Whiskey Lake",
                     GenerationNumber=8000,
-                    Manufacturer=new Manufacturer{
-                        Id=1,Name="Intel"
-                    },
+                    //Manufacturer=new Manufacturer{
+                    //    Id=1,Name="Intel"
+                    //},
+                    Manufacturer=Manufacturer.Intel,
                     HasIntegratedGraphics=true,
                     Class=Class.MobileLowPowered
                 },
                 // CPU #3 : i7-9750H
                 new CPU{
-                    Id=1,
+                    Id=3,
                     Model="Core i7-9750H",
                     FrequencyBase=2.4,
                     FrequencyTurbo=4.8,
@@ -65,17 +65,49 @@ namespace CPU_Information.Data.Services {
                     Architecture="Arch",
                     GenerationCodename="Coffee Lake-R",
                     GenerationNumber=9000,
-                    Manufacturer=new Manufacturer{
-                        Id=1,Name="Intel"
-                    },
+                    //Manufacturer=new Manufacturer{
+                    //    Id=1,Name="Intel"
+                    //},
+                    Manufacturer=Manufacturer.Intel,
                     HasIntegratedGraphics=true,
                     Class=Class.MobileHighPerformance
                 }
             };
         }
 
+        public void Add(CPU cpu) {
+            cpus.Add(cpu);
+            cpu.Id = cpus.Max(x => x.Id) + 1;
+        }
+
+        public void Update(CPU cpu) {
+            CPU existing = Get(cpu.Id);
+
+            if (existing != null) {
+                existing.Model = cpu.Model;
+                existing.FrequencyBase = cpu.FrequencyBase;
+                existing.FrequencyTurbo = cpu.FrequencyTurbo;
+                existing.CacheL1 = cpu.CacheL1;
+                existing.CacheL2 = cpu.CacheL2;
+                existing.CacheL3 = cpu.CacheL3;
+                existing.CoresPhysical = cpu.CoresPhysical;
+                existing.CoresLogical = cpu.CoresLogical;
+                existing.Architecture = cpu.Architecture;
+                existing.GenerationCodename = cpu.GenerationCodename;
+                existing.GenerationNumber = cpu.GenerationNumber;
+                existing.Manufacturer = cpu.Manufacturer;
+                existing.HasIntegratedGraphics = cpu.HasIntegratedGraphics;
+                existing.Class = cpu.Class;
+            }
+        }
+
+        public CPU Get(Int32 id) {
+            return cpus.FirstOrDefault(x => x.Id == id);
+        }
+
         public IEnumerable<CPU> GetAll() {
             return cpus.OrderBy(x => x.GenerationNumber);
         }
+
     }
 }

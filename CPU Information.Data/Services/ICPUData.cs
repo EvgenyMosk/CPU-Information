@@ -1,12 +1,12 @@
-﻿using CPU_Information.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CPU_Information.Data.Models;
 
 namespace CPU_Information.Data.Services {
     public interface ICPUData {
         IEnumerable<CPU> GetAll();
+        CPU Get(Int32 id);
+        void Add(CPU cpu);
+        void Update(CPU cpu);
     }
 }
